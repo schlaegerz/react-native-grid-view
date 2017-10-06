@@ -50,7 +50,7 @@ class CollectionView extends Component
           dataSource={ds.cloneWithRows(groups)}
         />);
     }
-});
+}
 
 
 var styles = StyleSheet.create({
