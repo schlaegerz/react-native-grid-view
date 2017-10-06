@@ -9,8 +9,9 @@ import {
   ListView,
 } from 'react-native';
 
-var CollectionView = React.createClass({
-    groupItems: function(items, itemsPerRow) {
+class CollectionView extends Component
+{
+    groupItems(items, itemsPerRow) {
         var itemsGroups = [];
         var group = [];
         items.forEach(function(item) {
@@ -27,8 +28,8 @@ var CollectionView = React.createClass({
         }
 
         return itemsGroups;
-    },
-    renderGroup: function(group) {
+    }
+    renderGroup(group) {
       var that = this;
       var items = group.map(function(item, index) {
         return that.props.renderItem(item, index);
@@ -38,8 +39,9 @@ var CollectionView = React.createClass({
           {items}
         </View>
       );
-    },
-    render: function() {
+    }
+  
+    render() {
         var groups = this.groupItems(this.props.items, this.props.itemsPerRow);
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         return (<ListView
@@ -47,7 +49,7 @@ var CollectionView = React.createClass({
           renderRow={this.renderGroup}
           dataSource={ds.cloneWithRows(groups)}
         />);
-    },
+    }
 });
 
 
