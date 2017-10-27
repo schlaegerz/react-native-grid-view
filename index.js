@@ -46,7 +46,7 @@ class CollectionView extends Component
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         return (<ListView
           {...this.props}
-          renderRow={this.renderGroup}
+          renderRow={this.renderGroup.bind(this)}
           dataSource={ds.cloneWithRows(groups)}
         />);
     }
